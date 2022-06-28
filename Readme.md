@@ -1,6 +1,6 @@
 # React Setup
 
-the fastest custom React Setup
+- a fast custom React Setup
 
 ## Process
 
@@ -54,3 +54,49 @@ the fastest custom React Setup
     - `"coverage": "vitest run --coverage"`
   - changes to Jest use:
     - `jest.fn()` -> `vi.fn()`: always same implementation, but instead of `jest` use `vi`
+
+- Alias Path remapping: define a string value like `@` to indicate a root import path: <https://www.typescriptlang.org/tsconfig#paths>
+
+  ```JSON
+  // tsconfig.json
+  {
+    "compilerOptions": {
+      // ...
+      "baseUrl": "./src",
+      "paths": {
+        "@/*": ["./*"]
+      }
+    },
+  }
+  ```
+
+  ```TypeScript
+  // vite.config.ts
+  // ..
+  import * as path from 'path';
+
+  // https://vitejs.dev/config/
+  export default defineConfig({
+    // ..
+    resolve: {
+      alias: {
+        '@': path.resolve(__dirname, './src'),
+      },
+    },
+  });
+  ```
+
+## Still TODO for a good setup
+
+- `ESLint`:
+  - Official Docu ESLint: <https://eslint.org/docs/latest/>
+  - TypeScript ESLint Plugin: <https://typescript-eslint.io/>
+  - search configuration articles for `ESLint` and `TypeScript`
+- `Prettier`:
+  - Official Docu: <https://prettier.io/docs/en/install.html>
+- `styled-components`:
+  - Official Docu: <https://styled-components.com/>
+- `EditorConfig`:
+  - Official Docu: <https://editorconfig.org/>
+  - every team member needs an extension for his IDE to use this .editorconfig-file
+- DevOps: deployment of code with `continuous integration`

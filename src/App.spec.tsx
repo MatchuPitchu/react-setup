@@ -8,4 +8,11 @@ describe('App component', () => {
     const text = screen.getAllByText(/React/);
     expect(text).toHaveLength(2);
   });
+
+  it('should render a Button', () => {
+    render(<App />);
+
+    const buttonContent = screen.getByRole('button', { name: /count/ });
+    expect(buttonContent).toBeInTheDocument();
+  });
 });
