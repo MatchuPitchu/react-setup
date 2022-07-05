@@ -3,9 +3,9 @@
 		"browser": true,
 		"es2021": true
 	},
-	// plugins inserts plugins in this configuration file -> you can use them in "rules" below
-	"plugins": ["react", "@typescript-eslint", "unused-imports"], // prettier should be at the end
-	// extends predefines rules
+	// inserts plugins installed via npm and make them available in this file -> you can use them in "rules" section
+	"plugins": ["react", "@typescript-eslint", "unused-imports"],
+	// extend configuration with predefined rules
 	"extends": [
 		"eslint:recommended",
 		"plugin:@typescript-eslint/recommended",
@@ -24,7 +24,7 @@
 		"sourceType": "module",
 		"project": "./tsconfig.eslint.json" // TypeScript config file
 	},
-	// https://eslint.org/docs/latest/rules/
+	// rules: https://eslint.org/docs/latest/rules/
 	"rules": {
 		"@typescript-eslint/no-unused-vars": "warn",
 		"unused-imports/no-unused-imports": "warn",
