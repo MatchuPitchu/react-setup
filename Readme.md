@@ -121,33 +121,99 @@
   - Official Documentation ESLint: <https://eslint.org/docs/latest/>
   - Plugin `Lintel: ESLint Configuration File Visualizer` for VSCode to visualize, edit and manage ESLint configuration files
   - `npm init @eslint/config` to install ESLint with the help of a CLI
+
     - `To check syntax, find problems, and enforce code style`
     - `JavaScript modules (import/export)`
     - `React`
     - `TypeScript`
     - `Browser`
-    - `Use a popular style guide`
-    - `Airbnb: https://github.com/airbnb/javascript`
+    - `Answer questions about your style`
     - config file: `JSON`
-    - install `peerDependencies` of `eslint-config-airbnb@latest`
-    - package manager: `npm`
-  - `npm install eslint-config-airbnb-typescript --save-dev`: sets ESLint configuration for Airbnb guide and TypeScript
+    - `Tabs` -> `Single` -> `Unix` -> semicolons `Yes` ->
+
+    - `Would you like to install them now: Yes`
+    - `Which package manager do you want to use?: npm`
+
   - configure the `.eslintrc.json` file
 
-  ```JSON
-
-  ```
+    ```JSON
+    {
+    	"env": {
+    		"browser": true,
+    		"es2021": true
+    	},
+    	// plugins inserts plugins in this configuration file -> you can use them in "rules" below
+    	"plugins": ["react", "@typescript-eslint", "unused-imports"], // prettier should be at the end
+    	// extends predefines rules
+    	"extends": [
+    		"eslint:recommended",
+    		"plugin:@typescript-eslint/recommended",
+    		"plugin:react/recommended",
+    		"plugin:import/typescript",
+    		"plugin:react/jsx-runtime",
+    		"plugin:react-hooks/recommended",
+    		"plugin:prettier/recommended" // prettier should be at the end
+    	],
+    	"parser": "@typescript-eslint/parser",
+    	"parserOptions": {
+    		"ecmaFeatures": {
+    			"jsx": true
+    		},
+    		"ecmaVersion": "latest",
+    		"sourceType": "module",
+    		"project": "./tsconfig.eslint.json" // TypeScript config file
+    	},
+    	"settings": {
+    		"import/parsers": {
+    			"@typescript-eslint/parser": [".ts", ".tsx"]
+    		},
+    		"import/resolver": {
+    			"typescript": {},
+    			"alias": {
+    				"map": [["@", "./src"]],
+    				"extensions": [".ts", ".tsx"]
+    			}
+    		}
+    	},
+    	// https://eslint.org/docs/latest/rules/
+    	"rules": {
+    		"@typescript-eslint/no-unused-vars": "warn",
+    		"unused-imports/no-unused-imports": "warn",
+    		"react/jsx-props-no-spreading": "warn",
+    		"no-shadow": "warn",
+    		"no-console": "warn",
+    		"no-lonely-if": "warn",
+    		"no-nested-ternary": "warn",
+    		"no-duplicate-imports": "error",
+    		"eqeqeq": "error",
+    		"func-names": "warn"
+    	}
+    }
+    ```
 
   - list of ESLint rules: <https://eslint.org/docs/latest/rules/>
 
   - add scripts to `package.json`: `.` points at the current config file, `fix` fixes some basic rules automatically
 
-  ```JSON
-  "scripts": {
-   "lint": "eslint .",
-   "lint:fix": "eslint --fix ."
-  }
-  ```
+    ```JSON
+    "scripts": {
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix ."
+    }
+    ```
+
+  - `.eslintignore`:
+
+    ```Text
+    # don't ever lint node_modules
+    /node_modules
+
+    # don't lint build output (make sure it's set to your correct build folder name)
+    /dist
+    /build
+    /coverage
+    /.husky
+    ```
 
   - install ESLint plugin for `vite`: `npm i eslint vite-plugin-eslint --save-dev`
     - if using Typescript, install @types/eslint to ensure the full type is exported: `npm i @types/eslint --save-dev`
