@@ -32,12 +32,12 @@ import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-plugins: [react()],
-	test: {
-		globals: true,
-		environment: 'jsdom',
-			setupFiles: 'src/tests/setupTests.ts',
-	}
+	plugins: [react()],
+		test: {
+			globals: true,
+			environment: 'jsdom',
+				setupFiles: 'src/tests/setupTests.ts',
+		}
 })
 ```
 
@@ -109,7 +109,6 @@ export default defineConfig({
 > Official Documentation and Configuration settings: <https://editorconfig.org/>
 
 - create `.editorconfig`
-- install `EditorConfig for VS Code` Plugin or another extension for your IDE to use `.editorconfig`
 
 ```Text
 # editorconfig.org
@@ -130,6 +129,8 @@ max_line_length = off
 [*.{yml,yaml}]
 indent_style = space
 ```
+
+- install `EditorConfig for VS Code` Plugin or another extension for your IDE to use `.editorconfig`
 
 ### ESLint
 
@@ -240,6 +241,15 @@ indent_style = space
 
 - install Prettier locally for your project: `npm install --save-dev --save-exact prettier`
 - create `.prettierrc.json` for the configuration
+
+```JSON
+{
+	"singleQuote": true,
+	"trailingComma": "none",
+	"printWidth": 120
+}
+```
+
 - create `.prettierignore` file to let Prettier CLI and editors know which files to not format
 
 ```Text
