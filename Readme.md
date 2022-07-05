@@ -70,33 +70,121 @@
   }
   ```
 
+- install package `npm i vite-tsconfig-paths` for vite to give `vite` the ability to resolve imports using TypeScript's path mapping
+
   ```TypeScript
   // vite.config.ts
   // ..
-  import * as path from 'path';
+  import tsconfigPaths from 'vite-tsconfig-paths';
+
 
   // https://vitejs.dev/config/
   export default defineConfig({
     // ..
-    resolve: {
-      alias: {
-        '@': path.resolve(__dirname, './src'),
-      },
-    },
+  	plugins: [tsconfigPaths(), react()],
   });
   ```
 
-## Still TODO for a good setup
+## Plugins and Extensions
+
+> Tutorial video for setup example with create-react-app, VSCode, Prettier, Husky: <https://www.youtube.com/watch?v=ZXW6Jn6or1w>
+
+- `EditorConfig`:
+
+  > Official Documentation and Configuration settings: <https://editorconfig.org/>
+
+  - create `.editorconfig`
+  - install `EditorConfig for VS Code` Plugin or another extension for your IDE to use `.editorconfig`
+
+  ```Text
+  # editorconfig.org
+  # set to true, otherwise EditorConfig looks for .editorconfig file outside of project
+  root = true
+
+  [*]
+  indent_style = tab
+  indent_size = 2
+  end_of_line = lf
+  insert_final_newline = true
+  trim_trailing_whitespace =  true
+  charset = utf-8
+  # editorconfig-tools is unable to ignore long strings or urls
+  max_line_length = off
+
+  # yaml files don't work with tab indentation
+  [*.{yml,yaml}]
+  indent_style = space
+  ```
 
 - `ESLint`:
-  - Official Docu ESLint: <https://eslint.org/docs/latest/>
-  - TypeScript ESLint Plugin: <https://typescript-eslint.io/>
-  - search configuration articles for `ESLint` and `TypeScript`
+
+  - Official Documentation ESLint: <https://eslint.org/docs/latest/>
+  - Plugin `Lintel: ESLint Configuration File Visualizer` for VSCode to visualize, edit and manage ESLint configuration files
+  - `npm init @eslint/config` to install ESLint with the help of a CLI
+    - `To check syntax, find problems, and enforce code style`
+    - `JavaScript modules (import/export)`
+    - `React`
+    - `TypeScript`
+    - `Browser`
+    - `Use a popular style guide`
+    - `Airbnb: https://github.com/airbnb/javascript`
+    - config file: `JSON`
+    - install `peerDependencies` of `eslint-config-airbnb@latest`
+    - package manager: `npm`
+  - `npm install eslint-config-airbnb-typescript --save-dev`: sets ESLint configuration for Airbnb guide and TypeScript
+  - configure the `.eslintrc.json` file
+
+  ```JSON
+
+  ```
+
+  - list of ESLint rules: <https://eslint.org/docs/latest/rules/>
+
+  - add scripts to `package.json`: `.` points at the current config file, `fix` fixes some basic rules automatically
+
+  ```JSON
+  "scripts": {
+   "lint": "eslint .",
+   "lint:fix": "eslint --fix ."
+  }
+  ```
+
+  - install ESLint plugin for `vite`: `npm i eslint vite-plugin-eslint --save-dev`
+    - if using Typescript, install @types/eslint to ensure the full type is exported: `npm i @types/eslint --save-dev`
+
 - `Prettier`:
-  - Official Docu: <https://prettier.io/docs/en/install.html>
+
+  > Official Documentation: <https://prettier.io/docs/en/install.html>
+
+  - install Prettier locally for your project: `npm install --save-dev --save-exact prettier`
+  - create `.prettierrc.json` for the configuration
+  - create `.prettierignore` file to let Prettier CLI and editors know which files to not format
+
+    ```Text
+    # Ignore artifacts:
+    build
+    coverage
+    dist
+    node_modules
+    ```
+
+  - install `npm i --save-dev eslint-plugin-prettier`
+  - install `npm i --save-dev eslint-config-prettier`: if you use `ESLint`, install `eslint-config-prettier` to make `ESLint` and `Prettier` play nice with each other. It turns off all ESLint rules that are unnecessary or might conflict with Prettier.
+  - install `npm i --save-dev stylelint-config-prettier`: if you use `Stylelint`, it turns off all ESLint rules that are unnecessary or might conflict with Prettier.
+  - Set up your editor: install `Prettier - Code formatter` Plugin for VSCode or another extension for your IDE
+
+- `Husky`
+
+  > Official Documentation: <https://typicode.github.io/husky/#/>
+
+  - run scripts prior to a commit
+  - initialize automatically in a project: `npx husky-init && npm install`
+  - define pre-commit scripts:
+    - either in Terminal with: `npx husky set .husky/pre-commit "npm run lint && npm run test"` - e.g. script lint and test, defined in `package.json`, is running before a commit
+    - or manually in folder `.husky` in file `pre-commit`
+
+## Still TODO for a good setup
+
 - `styled-components`:
-  - Official Docu: <https://styled-components.com/>
-- `EditorConfig`:
-  - Official Docu: <https://editorconfig.org/>
-  - every team member needs an extension for his IDE to use this .editorconfig-file
+  - Official Documentation: <https://styled-components.com/>
 - DevOps: deployment of code with `continuous integration`
