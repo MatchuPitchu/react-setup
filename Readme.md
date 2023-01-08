@@ -60,7 +60,7 @@ export default defineConfig({
   ```JSON
   "script": {
   	"test": "vitest",
-  	"coverage": "vitest run --coverage",
+  	"test:coverage": "vitest run --coverage",
   }
   ```
 
