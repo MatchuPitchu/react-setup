@@ -279,4 +279,5 @@ node_modules
 
 - `styled-components`:
   - Official Documentation: <https://styled-components.com/>
+- `Stylelint`
 - DevOps: deployment of code with `continuous integration`
