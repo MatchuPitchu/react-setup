@@ -177,7 +177,7 @@ indent_style = space
 		},
 		"ecmaVersion": "latest",
 		"sourceType": "module",
-		"project": "./tsconfig.eslint.json" // TypeScript config file
+		"project": "./tsconfig.json" // TypeScript config file
 	},
 	"settings": {
 		"import/parsers": {
