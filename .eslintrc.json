@@ -21,8 +21,8 @@
 			"jsx": true
 		},
 		"ecmaVersion": "latest",
-		"sourceType": "module",
-		"project": "./tsconfig.json" // TypeScript config file
+		"tsconfigRootDir": "./", // connection to  TypeScript config file
+		"sourceType": "module"
 	},
 	// rules: https://eslint.org/docs/latest/rules/
 	"rules": {

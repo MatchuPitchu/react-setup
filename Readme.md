@@ -176,8 +176,8 @@ indent_style = space
 			"jsx": true
 		},
 		"ecmaVersion": "latest",
-		"sourceType": "module",
-		"project": "./tsconfig.json" // TypeScript config file
+		"tsconfigRootDir": "./", // connection to  TypeScript config file
+		"sourceType": "module"
 	},
 	"settings": {
 		"import/parsers": {
@@ -196,13 +196,34 @@ indent_style = space
 		"@typescript-eslint/no-unused-vars": "warn",
 		"unused-imports/no-unused-imports": "warn",
 		"react/jsx-props-no-spreading": "warn",
-		"no-shadow": "warn",
+		"accessor-pairs": "warn",
+		"capitalized-comments": "warn",
+		"default-case": "warn",
+		"default-case-last": "error",
+		"dot-notation": "warn",
+		"eqeqeq": "error",
+		"no-eq-null": "error",
+		"func-style": ["error", "expression"],
+		"max-depth": ["warn", 3],
+		"max-nested-callbacks": ["warn", 3],
+		"multiline-comment-style": ["warn", "separate-lines"],
 		"no-console": "warn",
+		"no-duplicate-imports": "error",
+		"no-else-return": ["error", { "allowElseIf": false }],
 		"no-lonely-if": "warn",
 		"no-nested-ternary": "warn",
-		"no-duplicate-imports": "error",
-		"eqeqeq": "error",
-		"func-names": "warn"
+		"no-shadow": "warn",
+		"no-template-curly-in-string": "warn",
+		"no-unreachable-loop": "warn",
+		"no-use-before-define": "warn",
+		"no-useless-rename": "error",
+		"no-var": "error",
+		"prefer-arrow-callback": "error",
+		"prefer-const": "error",
+		"prefer-object-spread": "error",
+		"prefer-rest-params": "error",
+		"prefer-template": "error",
+		"require-await": "error"
 	}
 }
 ```
