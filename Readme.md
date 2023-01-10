@@ -60,7 +60,7 @@ export default defineConfig({
   ```JSON
   "script": {
   	"test": "vitest",
-  	"coverage": "vitest run --coverage",
+  	"test:coverage": "vitest run --coverage",
   }
   ```
 
@@ -177,7 +177,7 @@ indent_style = space
 		},
 		"ecmaVersion": "latest",
 		"sourceType": "module",
-		"project": "./tsconfig.eslint.json" // TypeScript config file
+		"project": "./tsconfig.json" // TypeScript config file
 	},
 	"settings": {
 		"import/parsers": {
@@ -279,4 +279,5 @@ node_modules
 
 - `styled-components`:
   - Official Documentation: <https://styled-components.com/>
+- `Stylelint`
 - DevOps: deployment of code with `continuous integration`

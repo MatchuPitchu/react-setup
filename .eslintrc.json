@@ -22,7 +22,7 @@
 		},
 		"ecmaVersion": "latest",
 		"sourceType": "module",
-		"project": "./tsconfig.eslint.json" // TypeScript config file
+		"project": "./tsconfig.json" // TypeScript config file
 	},
 	// rules: https://eslint.org/docs/latest/rules/
 	"rules": {
