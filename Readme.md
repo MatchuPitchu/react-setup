@@ -231,7 +231,7 @@ indent_style = space
 		"no-eq-null": "error",
 		"no-lonely-if": "warn",
 		"no-nested-ternary": "warn",
-		"no-shadow": "warn",
+		"no-shadow": "off",
 		"no-template-curly-in-string": "warn",
 		"no-unreachable-loop": "warn",
 		"no-use-before-define": "warn",
