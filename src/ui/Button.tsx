@@ -1,4 +1,5 @@
-import { FC, useState } from 'react';
+import { useState } from 'react';
+import type { FC } from 'react';
 
 export const Button: FC = () => {
 	const [count, setCount] = useState(0);

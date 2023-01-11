@@ -134,7 +134,10 @@ indent_style = space
 
 ### ESLint
 
-- Official Documentation ESLint: <https://eslint.org/docs/latest/>
+> Official Documentation ESLint: <https://eslint.org/docs/latest/>
+
+> Article about `ESLint and Prettier for React in TypeScript Project`: <https://itnext.io/auto-format-with-eslint-and-prettier-for-react-typescript-project-6526a9d44f81>
+
 - Plugin `Lintel: ESLint Configuration File Visualizer` for VSCode to visualize, edit and manage ESLint configuration files
 - `npm init @eslint/config` to install ESLint with the help of a CLI
 
@@ -145,12 +148,12 @@ indent_style = space
   - `Browser`
   - `Answer questions about your style`
   - config file: `JSON`
-  - `Tabs` -> `Single` -> `Unix` -> semicolons `Yes` ->
-
+  - `Tabs` -> `Single` -> `Unix` -> semicolons `Yes`
   - `Would you like to install them now: Yes`
   - `Which package manager do you want to use?: npm`
 
 - configure the `.eslintrc.json` file
+  - notice: install all listed plugins of `.eslintrc.json` file as dev dependencies
 
 ```JSON
 {
@@ -158,9 +161,9 @@ indent_style = space
 		"browser": true,
 		"es2021": true
 	},
-	// plugins inserts plugins in this configuration file -> you can use them in "rules" below
-	"plugins": ["react", "@typescript-eslint", "unused-imports"], // prettier should be at the end
-	// extends predefines rules
+	// inserts plugins installed via npm and make them available in this file -> you can use them in "rules" section
+	"plugins": ["react", "@typescript-eslint", "unused-imports", "import"],
+	// extend configuration with predefined rules
 	"extends": [
 		"eslint:recommended",
 		"plugin:@typescript-eslint/recommended",
@@ -179,37 +182,53 @@ indent_style = space
 		"tsconfigRootDir": "./", // connection to  TypeScript config file
 		"sourceType": "module"
 	},
-	"settings": {
-		"import/parsers": {
-			"@typescript-eslint/parser": [".ts", ".tsx"]
-		},
-		"import/resolver": {
-			"typescript": {},
-			"alias": {
-				"map": [["@", "./src"]],
-				"extensions": [".ts", ".tsx"]
-			}
-		}
-	},
-	// https://eslint.org/docs/latest/rules/
+	// rules: https://eslint.org/docs/latest/rules/
 	"rules": {
+		"no-unused-vars": "off", // base rule must be disabled as it can report incorrect errors
 		"@typescript-eslint/no-unused-vars": "warn",
+		"@typescript-eslint/consistent-type-imports": [
+			"error",
+			{
+				"prefer": "type-imports"
+			}
+		], // automatically detects if imported module is type or not and formats if needed
 		"unused-imports/no-unused-imports": "warn",
 		"react/jsx-props-no-spreading": "warn",
+		"react/self-closing-comp": [
+			"error",
+			{
+				"component": true,
+				"html": true
+			}
+		],
 		"accessor-pairs": "warn",
-		"capitalized-comments": "warn",
+		"capitalized-comments": "off",
 		"default-case": "warn",
 		"default-case-last": "error",
 		"dot-notation": "warn",
 		"eqeqeq": "error",
-		"no-eq-null": "error",
 		"func-style": ["error", "expression"],
+		"import/order": [
+			"error",
+			{
+				"groups": ["builtin", "external", "internal", "parent", "sibling", "index", "object", "type"],
+				"pathGroups": [
+					{
+						"pattern": "@/**/**",
+						"group": "parent",
+						"position": "before"
+					}
+				],
+				"alphabetize": { "order": "asc" }
+			}
+		],
+		"import/no-duplicates": "error",
 		"max-depth": ["warn", 3],
 		"max-nested-callbacks": ["warn", 3],
 		"multiline-comment-style": ["warn", "separate-lines"],
 		"no-console": "warn",
-		"no-duplicate-imports": "error",
 		"no-else-return": ["error", { "allowElseIf": false }],
+		"no-eq-null": "error",
 		"no-lonely-if": "warn",
 		"no-nested-ternary": "warn",
 		"no-shadow": "warn",
@@ -254,7 +273,7 @@ indent_style = space
 
 - install ESLint plugin for `vite`: `npm i eslint vite-plugin-eslint --save-dev`
 
-  - if using Typescript, install @types/eslint to ensure the full type is exported: `npm i @types/eslint --save-dev`
+  - if using Typescript, install `@types/eslint` to ensure the full type is exported: `npm i @types/eslint --save-dev`
 
 ### Prettier
 
