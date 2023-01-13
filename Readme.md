@@ -286,7 +286,8 @@ indent_style = space
 {
 	"singleQuote": true,
 	"trailingComma": "none",
-	"printWidth": 120
+	"printWidth": 120,
+	"endOfLine": "auto"
 }
 ```
 
