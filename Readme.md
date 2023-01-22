@@ -2,6 +2,8 @@
 
 - a fast custom React Setup with `Vite`, `Vitest` for testing, `EditorConfig`, `ESLint`, `Prettier` and `Husky`
 
+> Article about Migration `Create React App` to `Vite`: <https://cathalmacdonnacha.com/migrating-from-create-react-app-cra-to-vite>
+
 ## Process
 
 - `npm init`: creates `package.json`
