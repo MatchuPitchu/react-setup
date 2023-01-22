@@ -25,7 +25,6 @@
 
 ```TypeScript
 /// <reference types="vitest" />
-/// <reference types="vite/client" />
 
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
@@ -40,6 +39,16 @@ export default defineConfig({
 		}
 })
 ```
+
+- add `vite/client` types to `tsconfig.json`
+
+  ```JSON
+  {
+  	"compilerOptions": {
+  		"types": ["vite/client"],
+  	},
+  }
+  ```
 
 - install `React Testing Library Jest DOM`: `npm i @testing-library/jest-dom --save-dev`
 
