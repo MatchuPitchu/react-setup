@@ -159,7 +159,7 @@ indent_style = space
   - `Browser`
   - `Answer questions about your style`
   - config file: `JSON`
-  - `Tabs` -> `Single` -> `Unix` -> semicolons `Yes`
+  - `Space` -> `Single` -> `Unix` -> semicolons `Yes`
   - `Would you like to install them now: Yes`
   - `Which package manager do you want to use?: npm`
 
